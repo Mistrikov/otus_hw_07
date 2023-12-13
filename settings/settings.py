@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-^fa&ks2)bze(&i8+-)ajv5^&-^ndum55f&q2whmg_%^x&4i+ad
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['test.it-kyzyl.ru']
+#ALLOWED_HOSTS = ['test.it-kyzyl.ru']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -75,11 +76,11 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': BASE_DIR / 'db.sqlite3',
-    #},
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    },
+    'pg': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'uch',
         'USER': 'user',
@@ -131,4 +132,4 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru']
+#CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru']

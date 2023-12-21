@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+СуперШкола
+{% endblock %}
+
+{% block body %}
+{% if form.errors %}
+  <p>Неверные логин или пароль. Попробуйте еще раз</p>
+{% endif %}
+
+{% if next %}
+  {% if user.is_authenticated %}
+    <p>Вы не можете просматривать эту страницу. Недостаточно прав.</p>
+  {% else %}
+    <p>Войдите на сайт</p>
+  {% endif %}
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+<div class="text-center bg-body-tertiary rounded-3">
+    <img src="{% static 'images/logo.png' %}" class="bi mt-4 mb-3" width="100" height="100">
+    <h1 class="text-body-emphasis">Вход в СуперШколу</h1>
+      <table class="col-lg-4 mx-auto fs-5 text-muted">
+        <tr>
+          <td>{{ form.username.label_tag }}</td>
+          <td>{{ form.username }}</td>
+        </tr>
+        <tr>
+          <td>{{ form.password.label_tag }}</td>
+          <td>{{ form.password }}</td>
+        </tr>
+        </table>
+        <p></p>
+    <div class="d-inline-flex gap-2 mb-5">
+      <input class="btn btn-primary btn-sm px-4 rounded-pill" type="submit" value="Войти" />
+      <a class="btn btn-outline-secondary btn-sm px-4 rounded-pill" href="{% url 'mainapp:register' %}">Регистрация</a>
+      <a class="btn btn-outline-secondary btn-sm px-4 rounded-pill" href="/">Отмена</a>
+    </div>
+    <p><a href="{% url 'password_reset' %}">Забыли пароль?</a></p>
+  </div>
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+{% endblock %}

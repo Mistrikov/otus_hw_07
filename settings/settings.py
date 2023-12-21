@@ -9,7 +9,7 @@ SECRET_KEY = 'django-insecure-^fa&ks2)bze(&i8+-)ajv5^&-^ndum55f&q2whmg_%^x&4i+ad
 DEBUG = True
 
 #ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '10.8.0.9']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -110,7 +110,7 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 #CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru']
-CSRF_TRUSTED_ORIGINS = ['']
+CSRF_TRUSTED_ORIGINS = ['http://localhost']
 
 #LOGIN_URL = 'login/'
 LOGOUT_REDIRECT_URL = '/'

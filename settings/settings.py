@@ -8,8 +8,8 @@ SECRET_KEY = 'django-insecure-^fa&ks2)bze(&i8+-)ajv5^&-^ndum55f&q2whmg_%^x&4i+ad
 
 DEBUG = True
 
-#ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '10.8.0.9']
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1']
+#ALLOWED_HOSTS = ['127.0.0.1']
 
 
 INSTALLED_APPS = [
@@ -22,6 +22,7 @@ INSTALLED_APPS = [
 
     'debug_toolbar',
     'mainapp',
+    #'userapp',
 ]
 
 MIDDLEWARE = [
@@ -104,21 +105,25 @@ USE_TZ = True
 
 
 STATIC_URL = 'static/'
-
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-#CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru']
-CSRF_TRUSTED_ORIGINS = ['http://localhost']
+CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru', 'http://localhost']
+#CSRF_TRUSTED_ORIGINS = ['http://localhost']
 
 #LOGIN_URL = 'login/'
 LOGOUT_REDIRECT_URL = '/'
 LOGIN_REDIRECT_URL = '/'
+#AUTH_USER_MODEL = 'userapp.User'
 
-#INTERNAL_IPS = [
-#    "10.8.0.9",
-#    "192.168.1.253",
-#]
+INTERNAL_IPS = [
+    "192.168.1.253",
+    "127.0.0.1",
+]
 
 SHOW_TOOLBAR_CALLBACK = True
+

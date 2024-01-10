@@ -10,9 +10,9 @@
           <div class="col">
             <div class="card h-100">
               <div class="card-header">
-                <img src="{% static 'images/books.png' %}" width="30"> <b>{{category.name}}</b> <span class="badge bg-secondary">4{{category.count}}</span>
+                <img src="{% static 'images/books.png' %}" width="30"> <b>{{category.name}}</b> <span class="badge bg-secondary">{{category.course_count}}</span>
                 {% if user.is_authenticated %}
-                <div class="btn-group float-end" role="group" aria-label="Basic example">
+                <div class="btn-group float-end" role="group" aria-label="">
                   <a class="btn btn-sm btn-primary" href="{% url 'mainapp:categorycourse_update' pk=category.pk %}"><i class="bi bi-pen"></i></a>
                   <a class="btn btn-sm btn-danger" href="{% url 'mainapp:categorycourse_delete' pk=category.pk %}"><i class="bi bi-trash"></i></a>
                 </div>

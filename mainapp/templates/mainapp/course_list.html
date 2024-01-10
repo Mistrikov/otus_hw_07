@@ -11,14 +11,20 @@
             <div class="card h-100">
               <div class="card-header"><img src="{% static 'images/open-book.png' %}" width="30"> <b>{{course.name}}</b>
                 {% if user.is_authenticated %}
-                <div class="btn-group float-end" role="group" aria-label="Basic example">
+                <div class="btn-group float-end" role="group" aria-label="">
                   <a class="btn btn-sm btn-primary" href="{% url 'mainapp:course_update' pk=course.pk %}"><i class="bi bi-pen"></i></a>
                   <a class="btn btn-sm btn-danger" href="{% url 'mainapp:course_delete' pk=course.pk %}"><i class="bi bi-trash"></i></a>
                 </div>
                 {% endif %}
               </div>
               <div class="card-body">
-                <p class="card-text">{{course.description}}</p>
+                <p class="card-text"><b>Направление:</b> {{course.category.name}}</p>
+                <p class="card-text"><b>Описание курса:</b> {{course.description}}</p>
+                <p class="card-text"><b>Преподаватели:</b> 
+                    {% for teacher in course.teachers.all %}
+                      {{ teacher.last_name }} {{ teacher.first_name }},
+                    {% endfor %}
+                </p>
               </div>
               <div class="card-footer" >
                 <a class="d-inline-flex align-items-center btn btn-sm btn-primary btn-lg px-4 rounded-pill" href="#">Записаться</a>

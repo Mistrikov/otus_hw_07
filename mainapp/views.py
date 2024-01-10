@@ -6,6 +6,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.db.models import Count
 
 def index_view(request):
     return render(request, 'mainapp/index.html')
@@ -16,6 +17,11 @@ def contacts_view(request):
 class CategoryCourseListView(ListView):
     model = CategoryCourse
     ordering = ['pk']
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.annotate(course_count = Count('course'))
+        return queryset
+
     # template_name = ''
     # context_object_name =
 
@@ -31,7 +37,6 @@ class CategoryCourseCreateView(LoginRequiredMixin, CreateView):
 class CategoryCourseUpdateView(LoginRequiredMixin, UpdateView):
     model = CategoryCourse
     form_class = CategoryCourseForm
-    #fields = '__all__'
     success_url = reverse_lazy('mainapp:categorycourse_list')
 
 class CategoryCourseDeleteView(LoginRequiredMixin, DeleteView):
@@ -53,6 +58,9 @@ class CourseListView(ListView):
         queryset = super().get_queryset()
         if self.categorycourse_id is not None:
             queryset = queryset.filter(category__id=self.categorycourse_id)
+
+        queryset = queryset.select_related('category') # для оптимизации загрузки имени категории
+        queryset = queryset.prefetch_related('teachers') # для оптимизации загрузки списка преподавателей
         return queryset
     
 
@@ -64,7 +72,6 @@ class CourseCreateView(LoginRequiredMixin, CreateView):
 class CourseUpdateView(LoginRequiredMixin, UpdateView):
     model = Course
     form_class = CourseForm
-    #fields = '__all__'
     success_url = reverse_lazy('mainapp:course_list')
 
 class CourseDeleteView(LoginRequiredMixin, DeleteView):

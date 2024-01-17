@@ -1,6 +1,8 @@
 from django.core.management.base import BaseCommand, CommandError
 from mainapp.models import CategoryCourse, Course, Lesson, Schedule
+from userapp.models import ScUser
 from django.contrib.auth import get_user_model;
+import pickle
 
 class Command(BaseCommand):
     help = "Заполнение БД тестовыми данными"
@@ -12,8 +14,8 @@ class Command(BaseCommand):
             Lesson.objects.all().delete()
             Course.objects.all().delete()
             CategoryCourse.objects.all().delete()
-            User = get_user_model()
-            User.objects.all().delete()
+            ScUser = get_user_model()
+            ScUser.objects.all().delete()
 
             print('Заполнение БД')
             category = CategoryCourse.objects.create(name='Открытые курсы', description='Курсы для свободного изучения всеми желающими')
@@ -48,17 +50,18 @@ class Command(BaseCommand):
             Schedule.objects.create(date='2023-09-09 08:00:00+07', lesson=lesson3)
 
             print('создание админа')
-            User = get_user_model()
-            admin = User.objects.create_superuser('admin', 'admin@myproject.com', 'admin')
+            ScUser = get_user_model()
+            admin = ScUser.objects.create_superuser(username='admin', email='admin@myproject.com', password='admin', phone='9632504741')
             admin.last_name = 'Администратор'
             admin.save()
 
             print('создание учителя')
-            teacher1 = User.objects.create_user('teacher', 'teacher@example.com', '1')
+            teacher1 = ScUser.objects.create_user(username='teacher1', email='teacher@example.com', password='1', phone='123')
             teacher1.last_name = 'Иванов'
             teacher1.first_name = 'Семен'
             teacher1.save()
             
+            print('Добавление преподавателей в курсы')
             course1.teachers.add(teacher1)
             course1.save()
 

@@ -3,3 +3,10 @@ psycopg2-binary==2.9.9
 django-debug-toolbar==4.2.0
 coverage==7.3.4
 Pillow==10.1.0
+#django-image-uploader-widget==0.4.1
+djangorestframework==3.14.0
+Markdown==3.5.2
+django-filter==23.5
+requests==2.31.0
+django-rq==2.10.1
+celery==5.3.6 # pip install -U "celery[redis]"

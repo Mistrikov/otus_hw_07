@@ -21,8 +21,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
+    'image_uploader_widget',
+    'rest_framework',
+    'django_rq',
+
     'mainapp',
-    #'userapp',
+    'userapp',
 ]
 
 MIDDLEWARE = [
@@ -104,26 +108,71 @@ USE_I18N = True
 USE_TZ = True
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+DEFAULT_USER_IMAGE = MEDIA_URL + 'user/nophoto.png'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru', 'http://localhost']
 #CSRF_TRUSTED_ORIGINS = ['http://localhost']
 
-#LOGIN_URL = 'login/'
+AUTH_USER_MODEL = 'userapp.ScUser'
+LOGIN_URL = '/user/login/'
+LOGIN_REDIRECT_URL = '/user/profile/'
 LOGOUT_REDIRECT_URL = '/'
-LOGIN_REDIRECT_URL = '/'
-#AUTH_USER_MODEL = 'userapp.User'
 
 INTERNAL_IPS = [
     "192.168.1.253",
     "127.0.0.1",
 ]
 
-SHOW_TOOLBAR_CALLBACK = True
+#SHOW_TOOLBAR_CALLBACK = True
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny' #DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+
+RQ_QUEUES = {
+    'default': {
+        'HOST': 'localhost',
+        'PORT': 6379,
+        'DB': 0,
+        #'USERNAME': 'some-user',
+        #'PASSWORD': 'some-password',
+        #'DEFAULT_TIMEOUT': 360,
+        #'REDIS_CLIENT_KWARGS': {    # Eventual additional Redis connection arguments
+        #    'ssl_cert_reqs': None,
+        #},
+    },
+}
+
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+
+# тестовая отправка писем. сохраняем их в папке emails
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend' 
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
+# отправка почты
+#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025 
+EMAIL_HOST_USER = '' 
+EMAIL_HOST_PASSWORD =  '' 
+EMAIL_USE_TLS = False 
+
+DEFAULT_FROM_EMAIL = 'robot@superschool.ru'
+SERVER_EMAIL = 'robot@superschool.ru'
+EMAIL_ADMIN = 'mistrikov1@yandex.ru'
+ADMINS = [('Игорь', 'mistrikov1@yandex.ru')]
 

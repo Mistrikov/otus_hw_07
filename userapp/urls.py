@@ -4,11 +4,10 @@ from . import views
 app_name = 'userapp'
 
 urlpatterns = [
-    
-    #path('contacts/', views.contacts_view, name='contacts'),
-    #path('categorycourse/update/<int:pk>/', views.CategoryCourseUpdateView.as_view(), name='categorycourse_update'),
-    #path('course/list/', views.CourseListView.as_view(), name='course_list'),
-    #path('course/list/<int:pk>', views.CourseListView.as_view(), name='course_list'),
-    #path('register/', views.UserRegisterView.as_view(), name='register'),
+    path('login/', views.LoginUser.as_view(), name='login'),
+    path('logout/', views.LogoutUser.as_view(), name='logout'),
+    path('registration/', views.UserRegisterView.as_view(), name='registration'),
+    path('profile/', views.ProfileUser.as_view(), name='profile'),
+    path('changepassword/', views.UserPasswordChangeForm.as_view(), name='changepassword'),
     path('', views.index_view, name='index'),
 ]

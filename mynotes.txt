@@ -1,1 +1,7 @@
 Записки
+Просмотр состояния очередей redis, обновление 1 сек
+python manage.py rqstats --interval=1   
+
+запуск воркера django_rq
+python manage.py rqworker
+python manage.py rqworker <имена воркеров>

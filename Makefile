@@ -16,6 +16,9 @@ createsuperuser:
 fill_db:
 	python manage.py fill_db
 
+create_admin:
+	python manage.py create_admin
+
 test:
 	python manage.py test
 

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+СуперШкола
+{% endblock %}
+
+{% block body %}
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="text-center bg-body-tertiary rounded-3">
+        <h2 class="text-body-emphasis">Регистрация</h2>
+          <table class="col-lg-4 mx-auto fs-5 text-muted">
+            {% for field in form.visible_fields %}
+            <tr>
+                <td>{{ field.label_tag }}</td>
+                <td>{{ field }}</td>
+            </tr>
+                {% if field.errors %}
+                <tr><td colspan="2">
+                    {{ field.errors }}
+                </td></tr>
+                {% endif %}
+            {% endfor %}
+            </table>
+            <p></p>
+        <div class="d-inline-flex gap-2 mb-5">
+          <input class="btn btn-primary btn-sm px-4 rounded-pill" type="submit" value="Зарегистрироваться" />
+          <a class="btn btn-outline-secondary btn-sm px-4 rounded-pill" href="/">Отмена</a>
+        </div>
+      </div>
+    </form>
+{% endblock %}

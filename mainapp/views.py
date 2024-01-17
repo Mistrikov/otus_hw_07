@@ -1,18 +1,34 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-from .models import CategoryCourse, Course, Lesson, Schedule
-from .forms import CategoryCourseForm, UserRegisterForm, CourseForm
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.messages.views import SuccessMessageMixin
-from django.contrib.auth.views import LoginView, LogoutView
 from django.db.models import Count
+from django.conf import settings
+from .models import CategoryCourse, Course, Lesson, Schedule
+from .forms import CategoryCourseForm, CourseForm, ContactsForm
+
+from .jobs import send_email_user
+from .tasks import send_email_admin
+import django_rq
+from celery import Celery
 
 def index_view(request):
     return render(request, 'mainapp/index.html')
 
 def contacts_view(request):
-    return render(request, 'mainapp/contacts.html')
+    if request.method == 'POST':
+        form = ContactsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            django_rq.enqueue(send_email_user, data=form.data)
+            #django_rq.enqueue(send_email_admin, data=form.data)
+            # отправляем письмо админам через celery
+            send_email_admin.delay(data=form.data)
+            return render(request, 'mainapp/contacts.html', {'messagesend': True})
+    else:
+        form = ContactsForm()
+
+    return render(request, 'mainapp/contacts.html', {'form': form, 'messagesend': False})
 
 class CategoryCourseListView(ListView):
     model = CategoryCourse
@@ -80,15 +96,3 @@ class CourseDeleteView(LoginRequiredMixin, DeleteView):
 
 class CourseDetailView(DetailView):
     model = Course
-    
-
-class UserRegisterView(SuccessMessageMixin, CreateView):
-    form_class = UserRegisterForm
-    success_url = reverse_lazy('mainapp:categorycourse_list')
-    template_name = 'registration/register.html'
-    success_message = 'Вы успешно зарегистрировались. Можете войти на сайт!'
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['title'] = 'Регистрация на сайте'
-        return context

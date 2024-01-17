@@ -20,9 +20,28 @@
     <i class="bi bi-telephone"></i> +7-39422-12345
   </p>
   <div class="d-inline-flex gap-2 mb-5">
-    <a class="btn btn-outline-primary btn-lg px-4 rounded-pill" href="{% url 'mainapp:categorycourse_list' %}">Направления</a>
+    <a class="btn btn-outline-primary btn-lg px-4 rounded-pill"
+      href="{% url 'mainapp:categorycourse_list' %}">Направления</a>
     <a class="btn btn-outline-primary btn-lg px-4 rounded-pill" href="{% url 'mainapp:course_list' %}">Курсы</a>
   </div>
+  
+  {% if messagesend %}
+  <h3>Ваш вопрос отправлен менеджеру.<br>Ответ будет отправлен на указанный Вами адрес электронной почты</h3>
+  {% else %}
+  <p>
+  <div class="d-inline-flex gap-2 mb-5">
+    <form method="post">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <div class="card-footer">
+        <button type="submit" class="btn btn-primary">Отправить</button>
+        <a class="btn btn-secondary" href="{% url 'mainapp:contacts' %}">Отменить</a>
+      </div>
+    </form>
+  </div>
+</p>
+  {% endif %}
+  
 </div>
 
 

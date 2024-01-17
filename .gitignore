@@ -1,7 +1,4 @@
 __pycache__/
-api/__pycache__/
-mainapp/__pycache__/
-userapp/__pycache__/
 venv/
 .vscode/
 

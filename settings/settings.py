@@ -21,7 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
-    'image_uploader_widget',
+    #'image_uploader_widget',
     'rest_framework',
     'django_rq',
 

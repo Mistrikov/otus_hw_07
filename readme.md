@@ -6,6 +6,8 @@
 <h3>Алгоритм проверки</h3>
 <ul>
 <li> Запустить Redis: <b>docker compose up -d redis</b></li>
+<li> Создать БД <b>make migrate</b></li>
+<li> Заполнить БД демоданными: <b>make fill_db</b></li>
 <li> Запустить проект: <b>make runserver</b> или <b>python manage.py runserver</b></li>
 <li> Запустить воркер django_rq командой <b>python manage.py rqworker</b></li>
 <li> Запустить воркер celery командой <b>celery -A settings worker -l INFO</b></li>

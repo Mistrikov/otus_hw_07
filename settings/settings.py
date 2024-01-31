@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-^fa&ks2)bze(&i8+-)ajv5^&-^ndum55f&q2whmg_%^x&4i+ad
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1', 'sc.it-kyzyl.ru']
+ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1', 'sc.it-kyzyl.ru', 'localhost']
 #ALLOWED_HOSTS = ['127.0.0.1']
 
 

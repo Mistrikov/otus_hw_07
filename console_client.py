@@ -21,7 +21,7 @@ res = requests.get(url_category, headers=headers)
 assert res.status_code==200, res.status_code
 cat_id = res.json()['results'][0]['id'] # id первой категории в списке
 
-res = requests.get(url_category+f'/{cat_id}/', headers=headers)
+res = requests.get(f'{url_category}{cat_id}/', headers=headers)
 assert res.status_code==200, res.status_code
 
 # список категорий

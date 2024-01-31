@@ -13,8 +13,12 @@
                 <img src="{% static 'images/books.png' %}" width="30"> <b>{{category.name}}</b> <span class="badge bg-secondary">{{category.course_count}}</span>
                 {% if user.is_authenticated %}
                 <div class="btn-group float-end" role="group" aria-label="">
+                  {% if perms.mainapp.change_categorycourse %}
                   <a class="btn btn-sm btn-primary" href="{% url 'mainapp:categorycourse_update' pk=category.pk %}"><i class="bi bi-pen"></i></a>
+                  {% endif %}
+                  {% if perms.mainapp.delete_categorycourse %}
                   <a class="btn btn-sm btn-danger" href="{% url 'mainapp:categorycourse_delete' pk=category.pk %}"><i class="bi bi-trash"></i></a>
+                  {% endif %}
                 </div>
                 {% endif %}
               </div>
@@ -28,7 +32,21 @@
           </div>
   {% endfor %}  
 </div>
-<div><hr>
-<a class="d-inline-flex align-items-center btn btn-sm btn-secondary btn-lg px-4 rounded-pill" href="{% url 'mainapp:categorycourse_create' %}">Добавить направление</a>
+<p> </p>
+<nav class="nav justify-content-center navbar-light bg-light">
+  <form class="d-flex" method="get" id="form" onsubmit="">
+    <input name="categorycourse"  class="form-control me-2" placeholder="фильтр" value="{{ request.GET.categorycourse }}" >&nbsp;
+  </form>
+  <ul class="nav mb-2 mb-md-0">
+      {% for p in page_obj.paginator.page_range %}
+        <a href="?page={{ p }}{% if request.GET.categorycourse %}&categorycourse={{ request.GET.categorycourse }}{% endif %}" class="btn btn-outline-secondary{% if page_obj.number == p %}active{% endif %}">{{ p }}</a>
+        &nbsp;
+      {% endfor %}
+  </ul>
+</nav>
+<div>
+  {% if perms.mainapp.add_categorycourse %}
+  <a class="d-inline-flex align-items-center btn btn-sm btn-secondary btn-lg px-4 rounded-pill" href="{% url 'mainapp:categorycourse_create' %}">Добавить направление</a>
+  {% endif %}
 </div>
 {% endblock %}

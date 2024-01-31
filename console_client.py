@@ -1,24 +1,29 @@
 import requests
 
-url = 'https://test.it-kyzyl.ru/api/category/'
+url_category = 'http://localhost:8000/api/category/'
+url_course = 'http://localhost:8000/api/course/'
+url_auth_jwt = 'http://localhost:8000/api/token/'
 
-res = requests.get(url)
-#print(res.json())
-assert res.status_code == 200
-
-res = requests.options(url)
-#print(res.json())
-assert res.status_code == 200
-
+# JWT авторизация
 data = {
-    'name': 'Новая категория курсов'
+    'username': 'teacher1',
+    'password': '1'
 }
-res = requests.post(url, data=data)
-#print(res.status_code, res.json())
-id = res.json()['id']
-assert res.status_code == 201
+res = requests.post(url_auth_jwt, data=data)
+assert res.status_code==200, res.status_code
+token = res.json()["access"]
 
-#id=5
+# список категорий
+headers = {
+   'Authorization': f'Bearer {token}'
+}
+res = requests.get(url_category, headers=headers)
+assert res.status_code==200, res.status_code
+cat_id = res.json()['results'][0]['id'] # id первой категории в списке
 
-res = requests.delete(f'{url}/{id}')
-assert res.status_code == 204
+res = requests.get(url_category+f'/{cat_id}/', headers=headers)
+assert res.status_code==200, res.status_code
+
+# список категорий
+res = requests.get(url_course, headers=headers)
+assert res.status_code==200, res.status_code

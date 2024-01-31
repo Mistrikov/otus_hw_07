@@ -10,17 +10,17 @@ makemigrations:
 migrate:
 	python manage.py migrate
 
-createsuperuser:
-	python manage.py createsuperuser
+#createsuperuser:
+#	python manage.py createsuperuser
 
 fill_db:
 	python manage.py fill_db
 
-create_admin:
-	python manage.py create_admin
+#create_admin:
+#	python manage.py create_admin
 
-test:
-	python manage.py test
+install:
+	python manage.py install
 
 coverage:
 	coverage run --source='.' manage.py test

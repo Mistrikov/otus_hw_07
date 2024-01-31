@@ -5,3 +5,37 @@ python manage.py rqstats --interval=1
 запуск воркера django_rq
 python manage.py rqworker
 python manage.py rqworker <имена воркеров>
+
+Получение параметров get запроса в URL строке
+{{ request.path }}<br>
+{{ request.get_full_path }}<br>
+{{ request.GET.urlencode }}<br>
+{{ request.GET.course }}<br>
+{{ request.GET.dict }}<br>
+{{ request.META.QUERY_STRING }}<br>
+
+Просмотр get запроса
+tcpdump -i any -s 0 -A 'tcp[((tcp[12:1] & 0xf0) >> 2):4] = 0x47455420'
+
+##### конвертировать pptx в png  #####
+apt install libreoffice
+apt install imagemagick
+apt install ghostscript
+Правим настройки imagemagick: в файле /etc/ImageMagick-6/policy.xml находим строку 
+<policy domain="coder" rights="none" pattern="PDF" /> и меняем настройку 
+<policy domain="coder" rights="read|write" pattern="PDF" />
+
+1.Конвертируем файл test.pptx в test.pdf
+soffice --headless --convert-to pdf test.pptx
+
+2. Конвертируем файл test.pdf в набор *.jpg файлов - постранично
+convert -density 150 prez.pdf -quality 80 output-%3d.jpg
+convert -quiet -density 150 -colorspace srgb test.pdf -quality 80 output-%3d.png
+
+
+---- не работает ----
+ppt2img==0.0.1
+python-pptx==0.6.23
+
+# DjangoModelPermissions
+Права для view назначаются автоматически!!!

@@ -18,6 +18,11 @@ class Course(models.Model):
     def __str__(self):
         return self.name
 
+    # свои методы в модели как свойство класса
+    @property
+    def title_name(self):
+        return f'{self.name} ({self.category.name})'
+
 class Lesson(models.Model):
     name = models.CharField(max_length=64, unique=False, null=False)
     course = models.ForeignKey(Course, on_delete=models.CASCADE)

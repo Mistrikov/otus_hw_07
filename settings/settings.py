@@ -8,7 +8,7 @@ SECRET_KEY = 'django-insecure-^fa&ks2)bze(&i8+-)ajv5^&-^ndum55f&q2whmg_%^x&4i+ad
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1']
+ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1', 'sc.it-kyzyl.ru']
 #ALLOWED_HOSTS = ['127.0.0.1']
 
 
@@ -24,6 +24,9 @@ INSTALLED_APPS = [
     #'image_uploader_widget',
     'rest_framework',
     'django_rq',
+    #'rest_framework.authtoken',
+    'django_filters',
+    'rest_framework_simplejwt',
 
     'mainapp',
     'userapp',
@@ -117,7 +120,7 @@ DEFAULT_USER_IMAGE = MEDIA_URL + 'user/nophoto.png'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru', 'http://localhost']
+CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru', 'http://localhost', 'https://sc.it-kyzyl.ru']
 #CSRF_TRUSTED_ORIGINS = ['http://localhost']
 
 AUTH_USER_MODEL = 'userapp.ScUser'
@@ -136,8 +139,15 @@ REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny' #DjangoModelPermissionsOrAnonReadOnly'
-    ]
+        'rest_framework.permissions.DjangoModelPermissions', #IsAuthenticated' #IsAdminUser'#AllowAny' DjangoModelPermissions #DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [ 
+        #'rest_framework.authentication.BasicAuthentication',
+        #'rest_framework.authentication.TokenAuthentication', 
+        'rest_framework.authentication.SessionAuthentication', 
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
 RQ_QUEUES = {

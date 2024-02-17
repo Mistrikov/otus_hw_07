@@ -1,13 +1,13 @@
 from django import forms
-from django.db import models
+# from django.db import models
 from .models import CategoryCourse, Course, ContactMessage
-#from django.contrib.auth.forms import UserCreationForm
 from userapp.models import ScUser
+
 
 class CategoryCourseForm(forms.ModelForm):
     name = forms.CharField(
-        label='Название', 
-        required=True, 
+        label='Название',
+        required=True,
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'введите название направления',
@@ -16,13 +16,13 @@ class CategoryCourseForm(forms.ModelForm):
         )
     )
     description = forms.CharField(
-        label='Описание', 
+        label='Описание',
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'введите описание направления',
                 'class': 'form-control',
-                'rows':4, 
-                'cols':20
+                'rows': 4,
+                'cols': 20
             }
         )
     )
@@ -31,16 +31,16 @@ class CategoryCourseForm(forms.ModelForm):
         model = CategoryCourse
         fields = '__all__'
 
+
 class CourseForm(forms.ModelForm):
     name = forms.CharField(
-        label='Название', 
-        required=True, 
+        label='Название',
+        required=True,
         widget=forms.TextInput(
             attrs={
                 'placeholder': 'введите название курса',
                 'class': 'form-control'
             }
-            
         )
     )
     category = forms.ModelChoiceField(
@@ -62,15 +62,15 @@ class CourseForm(forms.ModelForm):
         )
     )
     description = forms.CharField(
-        label='Описание', 
+        label='Описание',
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'введите описание направления',
                 'class': 'form-control',
-                'rows':4, 
-                'cols':20
+                'rows': 4,
+                'cols': 20
             }
-            
+
         )
     )
 
@@ -78,18 +78,19 @@ class CourseForm(forms.ModelForm):
         model = Course
         fields = '__all__'
 
+
 class ContactsForm(forms.ModelForm):
     name = forms.CharField(label='Ваше имя', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.CharField(label='Ваш E-mail', widget=forms.EmailInput(attrs={'class': 'form-input'}))
     topic = forms.CharField(label='Тема', widget=forms.TextInput(attrs={'class': 'form-input'}))
     message_text = forms.CharField(
-        label='Вопрос', 
+        label='Вопрос',
         widget=forms.Textarea(
             attrs={
                 'placeholder': 'введите Ваш вопрос',
                 'class': 'form-control',
-                'rows':4, 
-                'cols':20
+                'rows': 4,
+                'cols': 20
             }
         ))
 

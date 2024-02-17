@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 
-def user_directory_path(instance, filename): 
-    # Путь для сохранения персональных файлов MEDIA_ROOT / user_<id>/<filename> 
+
+def user_directory_path(instance, filename):
+    # Путь для сохранения персональных файлов MEDIA_ROOT / user_<id>/<filename>
     return 'user_{0}/{1}'.format(instance.id, filename)
+
 
 class ScUser(AbstractUser):
     email = models.EmailField(unique=True)
@@ -12,7 +14,6 @@ class ScUser(AbstractUser):
 
     def get_lastname(self):
         return self.last_name
-    
+
     def get_mediapath(self):
         return self.id
-    

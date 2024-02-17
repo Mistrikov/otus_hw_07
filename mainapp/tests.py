@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .models import CategoryCourse
 
+
 class TestCategoryCourse(TestCase):
     def test_some(self):
         self.assertEqual(1, 1)
@@ -8,6 +9,7 @@ class TestCategoryCourse(TestCase):
     def test_str(self):
         category = CategoryCourse.objects.create(name='QW')
         self.assertEqual(category.name, 'QW')
+
 
 class TestCategoryCourseListView(TestCase):
     def test_status_code(self):
@@ -27,5 +29,3 @@ class TestCategoryCourseListView(TestCase):
         response = self.client.get(url)
         context = response.context
         pass
-
-        

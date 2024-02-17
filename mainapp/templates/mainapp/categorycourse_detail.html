@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}
+    О категории
+{% endblock %}
+
+{% block body %}
+<div class="row ">
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-header"><img src="{% static 'images/open-book.png' %}" width="30"> Подробно о категории: <b>{{categorycourse.name}}</b>
+                
+              </div>
+              <div class="card-body">
+                <p class="card-text">{{categorycourse.description}}</p>
+              </p>
+              </div>
+              <div class="card-footer" >
+                <a class="d-inline-flex align-items-center btn btn-sm btn-primary btn-lg px-4 rounded-pill" href="{% url 'mainapp:categorycourse_list' %}">Все категории</a>
+              </div>
+            </div>
+          </div>
+</div>
+
+{% endblock %}

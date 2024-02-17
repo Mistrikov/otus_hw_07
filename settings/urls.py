@@ -18,7 +18,10 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
+from graphene_django.views import GraphQLView
 
+handler403 = 'mainapp.views.error_403'
+handler404 = 'mainapp.views.error_404'
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,9 +29,10 @@ urlpatterns = [
     path('', include('mainapp.urls')),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include('api.urls')),
-    
-] 
-urlpatterns +=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path("graphql/", GraphQLView.as_view(graphiql=True)),
+]
+
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar

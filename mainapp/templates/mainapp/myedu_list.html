@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 {% block title %}
-Курсы
+Мое обучение
 {% endblock %}
 
 {% block body %}
@@ -35,42 +35,31 @@
 {% endfor %}
 {% endif %}
 <div class="row row-cols-1 row-cols-md-3 g-4">
-  {% for course in course_list %}
+  {% for myedu in myedu_list %}
   <div class="col">
     <div class="card h-100">
-      <div class="card-header"><img src="{% static 'images/open-book.png' %}" width="30"> <b>{{course.name}}</b>
+      <div class="card-header"><img src="{% static 'images/open-book.png' %}" width="30"> <b>{{ myedu.course.name }}</b>
         <div class="btn-group float-end" role="group" aria-label="">
-          {% if perms.mainapp.change_course %}
-          <a class="btn btn-sm btn-primary" href="{% url 'mainapp:course_update' pk=course.pk %}"><i
-              class="bi bi-pen"></i></a>
-          {% endif %}
-          {% if perms.mainapp.delete_course %}
-          <a class="btn btn-sm btn-danger" href="{% url 'mainapp:course_delete' pk=course.pk %}"><i
+          {% if user.is_authenticated %}
+          <a class="btn btn-sm btn-danger" href="{% url 'mainapp:myedu_delete' pk=myedu.pk %}" title="Отказаться от курса"><i
               class="bi bi-trash"></i></a>
           {% endif %}
         </div>
       </div>
       <div class="card-body">
-        <p class="card-text"><b>Направление:</b> {{course.category.name}}</p>
-        <p class="card-text"><b>Описание курса:</b> {{course.description}}</p>
-        <p class="card-text"><b>Преподаватели:</b>
-          {% for teacher in course.teachers.all %}
+        <p class="card-text"><b>Направление:</b> {{myedu.course.category.name}}</p>
+        <p class="card-text"><b>Описание курса:</b> {{myedu.course.description}}</p>
+        <p class="card-text"><b>Преподаватели:</b> 
+          {% for teacher in myedu.course.teachers.all %}
           {{ teacher.last_name }} {{ teacher.first_name }},
           {% endfor %}
         </p>
+        <p class="card-text"><b>Дата записи:</b> {{ myedu.start_date }}</p>
       </div>
       <div class="card-footer">
         <div class="d-flex justify-content-center">
-          <form method="post" id="subscribe">
-            {% csrf_token %}
-            <input type="hidden" name='select_course' value="{{ course.id }}">
-            {% if user.is_authenticated %}
-            <button class="d-inline-flex align-items-center btn btn-sm btn-primary btn-lg px-4 rounded-pill"
-              type="submit">Записаться</button>
-            {% endif %}
-            <a class="d-inline-flex align-items-center btn btn-sm btn-secondary btn-lg px-4 rounded-pill"
-              href="{% url 'mainapp:course_detail' pk=course.pk %}">Подробнее</a>
-          </form>
+            <a class="d-inline-flex align-items-center btn btn-sm btn-primary btn-lg px-4 rounded-pill"
+              href="#">Перейти к обучению</a>
         </div>
       </div>
     </div>
@@ -91,14 +80,4 @@
     {% endfor %}
   </ul>
 </nav>
-<div>
-  {% if perms.mainapp.add_course %}
-  <a class="d-inline-flex align-items-center btn btn-sm btn-secondary px-3 rounded-pill"
-    href="{% url 'mainapp:course_create' %}">Добавить курс</a>
-  {% endif %}
-  {% if not request.GET.categorycourse is None %}
-  <a class="d-inline-flex align-items-center btn btn-sm btn-primary px-3 rounded-pill"
-    href="{% url 'mainapp:course_list' %}">Все курсы</a>
-  {% endif %}
-</div>
 {% endblock %}

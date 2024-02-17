@@ -1,5 +1,6 @@
 from django.core.mail import send_mail
 
+
 def send_email_user(data):
     print(f"Здравствуйте, {data['name']}\n Ваш вопрос получен. Ответ будет выслан на эту электронную почту.\nВаш вопрос:\n{data['message_text']}")
     send_mail(
@@ -10,6 +11,7 @@ def send_email_user(data):
         fail_silently=False,
     )
 
+
 '''def send_email_admin(data):
     print(f"От посетителя сайта {data['name']} ({data['email']}) поступил вопрос:\n{data['message_text']}")
     mail_admins(
@@ -17,5 +19,3 @@ def send_email_user(data):
         f"От посетителя сайта {data['name']} ({data['email']}) поступил вопрос:\n{data['message_text']}",
         fail_silently=False,
     )'''
-
-

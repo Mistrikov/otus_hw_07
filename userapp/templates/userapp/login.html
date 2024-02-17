@@ -7,36 +7,49 @@
 
 {% block body %}
 {% if form.errors %}
-  <p class="errorauth">Неверные логин или пароль. Попробуйте еще раз</p>
+<div class="alert alert-danger d-flex">
+  <i class="bi bi-exclamation-triangle-fill ">
+    Неверные логин или пароль. Попробуйте еще раз
+  </i>
+</div>
 {% endif %}
 
 {% if next %}
-  {% if user.is_authenticated %}
-    <p class="errorauth">Вы не можете просматривать эту страницу. Недостаточно прав.</p>
-  {% else %}
-    <p class="errorauth">Для просмотра этой страницы войдите на сайт</p>
-  {% endif %}
+{% if user.is_authenticated %}
+<div class="alert alert-danger d-flex">
+  <i class="bi bi-exclamation-triangle-fill ">
+    Вы не можете просматривать эту страницу. Недостаточно прав
+  </i>
+</div>
+{% else %}
+<div class="alert alert-danger d-flex">
+  <i class="bi bi-exclamation-triangle-fill ">
+    Для просмотра этой страницы войдите на сайт
+  </i>
+</div>
+{% endif %}
 {% endif %}
 
 <form method="post" action="{% url 'userapp:login' %}">
-{% csrf_token %}
-<div class="text-center bg-body-tertiary rounded-3">
+  {% csrf_token %}
+  <div class="text-center bg-body-tertiary rounded-3">
     <img src="{% static 'images/logo.png' %}" class="bi mt-4 mb-3" width="100" height="100">
     <h1 class="text-body-emphasis">Вход в СуперШколу</h1>
-      <table class="col-lg-4 mx-auto fs-5 text-muted">
-        <tr>
-          <td>{{ form.username.label_tag }}</td>
-          <td>{{ form.username }}</td>
-        </tr>
-        <tr>
-          <td>{{ form.password.label_tag }}</td>
-          <td>{{ form.password }}</td>
-        </tr>
-        </table>
-        <p></p>
+    <table class="col-lg-4 mx-auto fs-5 text-muted">
+      <tr>
+        <td>{{ form.username.label_tag }}</td>
+        <td>{{ form.username }}</td>
+      </tr>
+      <tr>
+        <td>{{ form.password.label_tag }}</td>
+        <td>{{ form.password }}</td>
+      </tr>
+    </table>
+    <p></p>
     <div class="d-inline-flex gap-2 mb-5">
       <input class="btn btn-primary btn-sm px-4 rounded-pill" type="submit" value="Войти" />
-      <a class="btn btn-outline-secondary btn-sm px-4 rounded-pill" href="{% url 'userapp:registration' %}">Регистрация</a>
+      <a class="btn btn-outline-secondary btn-sm px-4 rounded-pill"
+        href="{% url 'userapp:registration' %}">Регистрация</a>
       <a class="btn btn-outline-secondary btn-sm px-4 rounded-pill" href="/">Отмена</a>
     </div>
     <p><a href="#">Забыли пароль?</a></p>

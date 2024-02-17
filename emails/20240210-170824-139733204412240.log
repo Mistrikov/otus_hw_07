@@ -1,0 +1,450 @@
+Content-Type: text/plain; charset="utf-8"
+MIME-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Subject: [Django] ERROR (EXTERNAL IP): Forbidden (Permission denied):
+ /categorycourse/create/
+From: robot@superschool.ru
+To: mistrikov1@yandex.ru
+Date: Sat, 10 Feb 2024 10:08:24 -0000
+Message-ID: <170755970402.471855.5512848729744536588@homeserver>
+
+Forbidden (Permission denied): /categorycourse/create/
+
+PermissionDenied at /categorycourse/create/
+No exception message supplied
+
+Request Method: GET
+Request URL: http://test.it-kyzyl.ru/categorycourse/create/
+Django Version: 5.0
+Python Executable: /home/user/projects/otus/otus_hw_07/venv/bin/python
+Python Version: 3.11.2
+Python Path: ['/home/user/projects/otus/otus_hw_07', '/home/user/projects/o=
+tus/otus_hw_07', '/usr/lib/python311.zip', '/usr/lib/python3.11', '/usr/lib=
+/python3.11/lib-dynload', '/home/user/projects/otus/otus_hw_07/venv/lib/pyt=
+hon3.11/site-packages']
+Server time: Sat, 10 Feb 2024 17:08:23 +0700
+Installed Applications:
+['django.contrib.admin',
+ 'django.contrib.auth',
+ 'django.contrib.contenttypes',
+ 'django.contrib.sessions',
+ 'django.contrib.messages',
+ 'django.contrib.staticfiles',
+ 'debug_toolbar',
+ 'rest_framework',
+ 'django_rq',
+ 'django_filters',
+ 'rest_framework_simplejwt',
+ 'graphene_django',
+ 'mainapp',
+ 'userapp']
+Installed Middleware:
+['django.middleware.security.SecurityMiddleware',
+ 'django.contrib.sessions.middleware.SessionMiddleware',
+ 'django.middleware.common.CommonMiddleware',
+ 'django.middleware.csrf.CsrfViewMiddleware',
+ 'django.contrib.auth.middleware.AuthenticationMiddleware',
+ 'django.contrib.messages.middleware.MessageMiddleware',
+ 'django.middleware.clickjacking.XFrameOptionsMiddleware',
+ 'debug_toolbar.middleware.DebugToolbarMiddleware']
+
+
+Traceback (most recent call last):
+  File "/home/user/projects/otus/otus_hw_07/venv/lib/python3.11/site-packag=
+es/django/core/handlers/exception.py", line 55, in inner
+    response =3D get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/projects/otus/otus_hw_07/venv/lib/python3.11/site-packag=
+es/django/core/handlers/base.py", line 197, in _get_response
+    response =3D wrapped_callback(request, *callback_args, **callback_kwarg=
+s)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/projects/otus/otus_hw_07/venv/lib/python3.11/site-packag=
+es/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/projects/otus/otus_hw_07/venv/lib/python3.11/site-packag=
+es/django/contrib/auth/mixins.py", line 73, in dispatch
+    return super().dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/projects/otus/otus_hw_07/venv/lib/python3.11/site-packag=
+es/django/contrib/auth/mixins.py", line 108, in dispatch
+    return self.handle_no_permission()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/user/projects/otus/otus_hw_07/venv/lib/python3.11/site-packag=
+es/django/contrib/auth/mixins.py", line 48, in handle_no_permission
+    raise PermissionDenied(self.get_permission_denied_message())
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Exception Type: PermissionDenied at /categorycourse/create/
+
+Raised during: mainapp.views.CategoryCourseCreateView
+Request information:
+USER: teacher2
+
+GET: No GET data
+
+POST: No POST data
+
+FILES: No FILES data
+
+COOKIES:
+csrftoken =3D '********************'
+sessionid =3D '********************'
+
+META:
+BROWSER =3D '/usr/lib/code-server/lib/vscode/bin/helpers/browser.sh'
+COLORTERM =3D 'truecolor'
+CONTENT_LENGTH =3D ''
+CONTENT_TYPE =3D 'text/plain'
+CSRF_COOKIE =3D 'N9Qn8qvokD0cBaUjJVVp9d7PNQ06xgxr'
+DJANGO_SETTINGS_MODULE =3D 'settings.settings'
+GATEWAY_INTERFACE =3D 'CGI/1.1'
+GIT_ASKPASS =3D '********************'
+HOME =3D '/home/user'
+HTTP_ACCEPT =3D 'text/html,application/xhtml+xml,application/xml;q=3D0.9,im=
+age/avif,image/webp,image/apng,*/*;q=3D0.8,application/signed-exchange;v=3D=
+b3;q=3D0.7'
+HTTP_ACCEPT_ENCODING =3D 'gzip'
+HTTP_ACCEPT_LANGUAGE =3D 'ru,en;q=3D0.9'
+HTTP_CACHE_CONTROL =3D 'max-age=3D0'
+HTTP_CONNECTION =3D 'upgrade'
+HTTP_COOKIE =3D '********************'
+HTTP_HOST =3D 'test.it-kyzyl.ru'
+HTTP_REFERER =3D 'https://test.it-kyzyl.ru/user/login/?next=3D/categorycour=
+se/create/'
+HTTP_SEC_CH_UA =3D '"Not_A Brand";v=3D"8", "Chromium";v=3D"120", "YaBrowser=
+";v=3D"24.1", "Yowser";v=3D"2.5"'
+HTTP_SEC_CH_UA_MOBILE =3D '?1'
+HTTP_SEC_CH_UA_PLATFORM =3D '"Android"'
+HTTP_SEC_FETCH_DEST =3D 'document'
+HTTP_SEC_FETCH_MODE =3D 'navigate'
+HTTP_SEC_FETCH_SITE =3D 'same-origin'
+HTTP_SEC_FETCH_USER =3D '?1'
+HTTP_UPGRADE_INSECURE_REQUESTS =3D '1'
+HTTP_USER_AGENT =3D 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N)=
+ AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Mobile Safari/537.=
+36'
+INVOCATION_ID =3D '24a29ed156e64fe6aeba2a33f3416213'
+JOURNAL_STREAM =3D '8:16097'
+LANG =3D 'ru_RU.UTF-8'
+LOGNAME =3D 'user'
+LS_COLORS =3D 'rs=3D0:di=3D01;34:ln=3D01;36:mh=3D00:pi=3D40;33:so=3D01;35:d=
+o=3D01;35:bd=3D40;33;01:cd=3D40;33;01:or=3D40;31;01:mi=3D00:su=3D37;41:sg=
+=3D30;43:ca=3D00:tw=3D30;42:ow=3D34;42:st=3D37;44:ex=3D01;32:*.tar=3D01;31:=
+*.tgz=3D01;31:*.arc=3D01;31:*.arj=3D01;31:*.taz=3D01;31:*.lha=3D01;31:*.lz4=
+=3D01;31:*.lzh=3D01;31:*.lzma=3D01;31:*.tlz=3D01;31:*.txz=3D01;31:*.tzo=3D0=
+1;31:*.t7z=3D01;31:*.zip=3D01;31:*.z=3D01;31:*.dz=3D01;31:*.gz=3D01;31:*.lr=
+z=3D01;31:*.lz=3D01;31:*.lzo=3D01;31:*.xz=3D01;31:*.zst=3D01;31:*.tzst=3D01=
+;31:*.bz2=3D01;31:*.bz=3D01;31:*.tbz=3D01;31:*.tbz2=3D01;31:*.tz=3D01;31:*.=
+deb=3D01;31:*.rpm=3D01;31:*.jar=3D01;31:*.war=3D01;31:*.ear=3D01;31:*.sar=
+=3D01;31:*.rar=3D01;31:*.alz=3D01;31:*.ace=3D01;31:*.zoo=3D01;31:*.cpio=3D0=
+1;31:*.7z=3D01;31:*.rz=3D01;31:*.cab=3D01;31:*.wim=3D01;31:*.swm=3D01;31:*.=
+dwm=3D01;31:*.esd=3D01;31:*.avif=3D01;35:*.jpg=3D01;35:*.jpeg=3D01;35:*.mjp=
+g=3D01;35:*.mjpeg=3D01;35:*.gif=3D01;35:*.bmp=3D01;35:*.pbm=3D01;35:*.pgm=
+=3D01;35:*.ppm=3D01;35:*.tga=3D01;35:*.xbm=3D01;35:*.xpm=3D01;35:*.tif=3D01=
+;35:*.tiff=3D01;35:*.png=3D01;35:*.svg=3D01;35:*.svgz=3D01;35:*.mng=3D01;35=
+:*.pcx=3D01;35:*.mov=3D01;35:*.mpg=3D01;35:*.mpeg=3D01;35:*.m2v=3D01;35:*.m=
+kv=3D01;35:*.webm=3D01;35:*.webp=3D01;35:*.ogm=3D01;35:*.mp4=3D01;35:*.m4v=
+=3D01;35:*.mp4v=3D01;35:*.vob=3D01;35:*.qt=3D01;35:*.nuv=3D01;35:*.wmv=3D01=
+;35:*.asf=3D01;35:*.rm=3D01;35:*.rmvb=3D01;35:*.flc=3D01;35:*.avi=3D01;35:*=
+.fli=3D01;35:*.flv=3D01;35:*.gl=3D01;35:*.dl=3D01;35:*.xcf=3D01;35:*.xwd=3D=
+01;35:*.yuv=3D01;35:*.cgm=3D01;35:*.emf=3D01;35:*.ogv=3D01;35:*.ogx=3D01;35=
+:*.aac=3D00;36:*.au=3D00;36:*.flac=3D00;36:*.m4a=3D00;36:*.mid=3D00;36:*.mi=
+di=3D00;36:*.mka=3D00;36:*.mp3=3D00;36:*.mpc=3D00;36:*.ogg=3D00;36:*.ra=3D0=
+0;36:*.wav=3D00;36:*.oga=3D00;36:*.opus=3D00;36:*.spx=3D00;36:*.xspf=3D00;3=
+6:*~=3D00;90:*#=3D00;90:*.bak=3D00;90:*.old=3D00;90:*.orig=3D00;90:*.part=
+=3D00;90:*.rej=3D00;90:*.swp=3D00;90:*.tmp=3D00;90:*.dpkg-dist=3D00;90:*.dp=
+kg-old=3D00;90:*.ucf-dist=3D00;90:*.ucf-new=3D00;90:*.ucf-old=3D00;90:*.rpm=
+new=3D00;90:*.rpmorig=3D00;90:*.rpmsave=3D00;90:'
+MAKEFLAGS =3D ''
+MAKELEVEL =3D '1'
+MAKE_TERMERR =3D '/dev/pts/3'
+MAKE_TERMOUT =3D '/dev/pts/3'
+MFLAGS =3D ''
+NODE_EXEC_PATH =3D '/usr/lib/code-server/lib/node'
+PATH =3D '/home/user/.local/share/code-server/extensions/ms-python.python-2=
+023.22.1-universal/pythonFiles/deactivate/bash:/home/user/projects/otus/otu=
+s_hw_07/venv/bin:/usr/lib/code-server/lib/vscode/bin/remote-cli:/usr/local/=
+bin:/usr/bin:/bin:/usr/local/games:/usr/games'
+PATH_INFO =3D '/categorycourse/create/'
+PS1 =3D '\\[\x1b]633;A\x07\\](venv) \\[\\e]0;\\u@\\h: \\w\\a\\]${debian_chr=
+oot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;=
+34m\\]\\w\\[\\033[00m\\]\\$ \\[\x1b]633;B\x07\\]'
+PWD =3D '/home/user/projects/otus/otus_hw_07'
+QUERY_STRING =3D ''
+REMOTE_ADDR =3D '10.8.0.1'
+REMOTE_HOST =3D ''
+REQUEST_METHOD =3D 'GET'
+RUN_MAIN =3D 'true'
+SCRIPT_NAME =3D ''
+SERVER_NAME =3D 'homeserver'
+SERVER_PORT =3D '8000'
+SERVER_PROTOCOL =3D 'HTTP/1.0'
+SERVER_SOFTWARE =3D 'WSGIServer/0.2'
+SHELL =3D '/bin/bash'
+SHLVL =3D '1'
+SYSTEMD_EXEC_PID =3D '482'
+TERM =3D 'xterm-256color'
+TERM_PROGRAM =3D 'vscode'
+TERM_PROGRAM_VERSION =3D '1.85.1'
+TZ =3D 'Asia/Krasnoyarsk'
+USER =3D 'user'
+VIRTUAL_ENV =3D '/home/user/projects/otus/otus_hw_07/venv'
+VIRTUAL_ENV_PROMPT =3D '(venv) '
+VSCODE_GIT_ASKPASS_EXTRA_ARGS =3D '********************'
+VSCODE_GIT_ASKPASS_MAIN =3D '********************'
+VSCODE_GIT_ASKPASS_NODE =3D '********************'
+VSCODE_GIT_IPC_HANDLE =3D '/tmp/vscode-git-8d81ab0219.sock'
+VSCODE_IPC_HOOK_CLI =3D '/tmp/vscode-ipc-029af605-0b0d-4c92-bf2f-596aea43a6=
+9c.sock'
+VSCODE_PROXY_URI =3D 'https://cs.it-kyzyl.ru/proxy/{{port}}/'
+_ =3D '/usr/bin/make'
+wsgi.errors =3D <_io.TextIOWrapper name=3D'<stderr>' mode=3D'w' encoding=3D=
+'utf-8'>
+wsgi.file_wrapper =3D <class 'wsgiref.util.FileWrapper'>
+wsgi.input =3D <django.core.handlers.wsgi.LimitedStream object at 0x7f162c0=
+f1270>
+wsgi.multiprocess =3D False
+wsgi.multithread =3D True
+wsgi.run_once =3D False
+wsgi.url_scheme =3D 'http'
+wsgi.version =3D '(1, 0)'
+
+Settings:
+Using settings module settings.settings
+ABSOLUTE_URL_OVERRIDES =3D {}
+ADMINS =3D [('=D0=98=D0=B3=D0=BE=D1=80=D1=8C', 'mistrikov1@yandex.ru')]
+ALLOWED_HOSTS =3D ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1', 'sc.it=
+-kyzyl.ru', 'localhost']
+APPEND_SLASH =3D True
+AUTHENTICATION_BACKENDS =3D ['django.contrib.auth.backends.ModelBackend']
+AUTH_PASSWORD_VALIDATORS =3D '********************'
+AUTH_USER_MODEL =3D 'userapp.ScUser'
+BASE_DIR =3D PosixPath('/home/user/projects/otus/otus_hw_07')
+CACHES =3D {'default': {'BACKEND': 'django.core.cache.backends.locmem.LocMe=
+mCache'}}
+CACHE_MIDDLEWARE_ALIAS =3D 'default'
+CACHE_MIDDLEWARE_KEY_PREFIX =3D '********************'
+CACHE_MIDDLEWARE_SECONDS =3D 600
+CELERY_ACCEPT_CONTENT =3D ['application/json']
+CELERY_BROKER_URL =3D 'redis://localhost:6379/0'
+CELERY_RESULT_BACKEND =3D 'redis://localhost:6379/0'
+CELERY_RESULT_SERIALIZER =3D 'json'
+CELERY_TASK_SERIALIZER =3D 'json'
+CSRF_COOKIE_AGE =3D 31449600
+CSRF_COOKIE_DOMAIN =3D None
+CSRF_COOKIE_HTTPONLY =3D False
+CSRF_COOKIE_NAME =3D 'csrftoken'
+CSRF_COOKIE_PATH =3D '/'
+CSRF_COOKIE_SAMESITE =3D 'Lax'
+CSRF_COOKIE_SECURE =3D False
+CSRF_FAILURE_VIEW =3D 'django.views.csrf.csrf_failure'
+CSRF_HEADER_NAME =3D 'HTTP_X_CSRFTOKEN'
+CSRF_TRUSTED_ORIGINS =3D ['https://test.it-kyzyl.ru', 'http://localhost', '=
+https://sc.it-kyzyl.ru']
+CSRF_USE_SESSIONS =3D False
+DATABASES =3D {'default1': {'ENGINE': 'django.db.backends.sqlite3', 'NAME':=
+ PosixPath('/home/user/projects/otus/otus_hw_07/db.sqlite3'), 'ATOMIC_REQUE=
+STS': False, 'AUTOCOMMIT': True, 'CONN_MAX_AGE': 0, 'CONN_HEALTH_CHECKS': F=
+alse, 'OPTIONS': {}, 'TIME_ZONE': None, 'USER': '', 'PASSWORD': '**********=
+**********', 'HOST': '', 'PORT': '', 'TEST': {'CHARSET': None, 'COLLATION':=
+ None, 'MIGRATE': True, 'MIRROR': None, 'NAME': None}}, 'default': {'ENGINE=
+': 'django.db.backends.postgresql_psycopg2', 'NAME': 'uch', 'USER': 'user',=
+ 'PASSWORD': '********************', 'HOST': 'localhost', 'PORT': '5432', '=
+ATOMIC_REQUESTS': False, 'AUTOCOMMIT': True, 'CONN_MAX_AGE': 0, 'CONN_HEALT=
+H_CHECKS': False, 'OPTIONS': {}, 'TIME_ZONE': None, 'TEST': {'CHARSET': Non=
+e, 'COLLATION': None, 'MIGRATE': True, 'MIRROR': None, 'NAME': None}}}
+DATABASE_ROUTERS =3D []
+DATA_UPLOAD_MAX_MEMORY_SIZE =3D 2621440
+DATA_UPLOAD_MAX_NUMBER_FIELDS =3D 1000
+DATA_UPLOAD_MAX_NUMBER_FILES =3D 100
+DATETIME_FORMAT =3D 'N j, Y, P'
+DATETIME_INPUT_FORMATS =3D ['%Y-%m-%d %H:%M:%S', '%Y-%m-%d %H:%M:%S.%f', '%=
+Y-%m-%d %H:%M', '%m/%d/%Y %H:%M:%S', '%m/%d/%Y %H:%M:%S.%f', '%m/%d/%Y %H:%=
+M', '%m/%d/%y %H:%M:%S', '%m/%d/%y %H:%M:%S.%f', '%m/%d/%y %H:%M']
+DATE_FORMAT =3D 'N j, Y'
+DATE_INPUT_FORMATS =3D ['%Y-%m-%d', '%m/%d/%Y', '%m/%d/%y', '%b %d %Y', '%b=
+ %d, %Y', '%d %b %Y', '%d %b, %Y', '%B %d %Y', '%B %d, %Y', '%d %B %Y', '%d=
+ %B, %Y']
+DEBUG =3D False
+DEBUG_PROPAGATE_EXCEPTIONS =3D False
+DECIMAL_SEPARATOR =3D '.'
+DEFAULT_AUTO_FIELD =3D 'django.db.models.BigAutoField'
+DEFAULT_CHARSET =3D 'utf-8'
+DEFAULT_EXCEPTION_REPORTER =3D 'django.views.debug.ExceptionReporter'
+DEFAULT_EXCEPTION_REPORTER_FILTER =3D 'django.views.debug.SafeExceptionRepo=
+rterFilter'
+DEFAULT_FILE_STORAGE =3D 'django.core.files.storage.FileSystemStorage'
+DEFAULT_FROM_EMAIL =3D 'robot@superschool.ru'
+DEFAULT_INDEX_TABLESPACE =3D ''
+DEFAULT_TABLESPACE =3D ''
+DEFAULT_USER_IMAGE =3D '/media/user/nophoto.png'
+DISALLOWED_USER_AGENTS =3D []
+EMAIL_ADMIN =3D 'mistrikov1@yandex.ru'
+EMAIL_BACKEND =3D 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH =3D '/home/user/projects/otus/otus_hw_07/emails'
+EMAIL_HOST =3D 'localhost'
+EMAIL_HOST_PASSWORD =3D '********************'
+EMAIL_HOST_USER =3D ''
+EMAIL_PORT =3D 1025
+EMAIL_SSL_CERTFILE =3D None
+EMAIL_SSL_KEYFILE =3D '********************'
+EMAIL_SUBJECT_PREFIX =3D '[Django] '
+EMAIL_TIMEOUT =3D None
+EMAIL_USE_LOCALTIME =3D False
+EMAIL_USE_SSL =3D False
+EMAIL_USE_TLS =3D False
+FILE_UPLOAD_DIRECTORY_PERMISSIONS =3D None
+FILE_UPLOAD_HANDLERS =3D ['django.core.files.uploadhandler.MemoryFileUpload=
+Handler', 'django.core.files.uploadhandler.TemporaryFileUploadHandler']
+FILE_UPLOAD_MAX_MEMORY_SIZE =3D 2621440
+FILE_UPLOAD_PERMISSIONS =3D 420
+FILE_UPLOAD_TEMP_DIR =3D None
+FIRST_DAY_OF_WEEK =3D 0
+FIXTURE_DIRS =3D []
+FORCE_SCRIPT_NAME =3D None
+FORMAT_MODULE_PATH =3D None
+FORMS_URLFIELD_ASSUME_HTTPS =3D False
+FORM_RENDERER =3D 'django.forms.renderers.DjangoTemplates'
+GRAPHENE =3D {'SCHEMA': 'api.schema.schema'}
+IGNORABLE_404_URLS =3D []
+INSTALLED_APPS =3D ['django.contrib.admin', 'django.contrib.auth', 'django.=
+contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages'=
+, 'django.contrib.staticfiles', 'debug_toolbar', 'rest_framework', 'django_=
+rq', 'django_filters', 'rest_framework_simplejwt', 'graphene_django', 'main=
+app', 'userapp']
+INTERNAL_IPS =3D ['192.168.1.253', '127.0.0.1']
+LANGUAGES =3D [('af', 'Afrikaans'), ('ar', 'Arabic'), ('ar-dz', 'Algerian A=
+rabic'), ('ast', 'Asturian'), ('az', 'Azerbaijani'), ('bg', 'Bulgarian'), (=
+'be', 'Belarusian'), ('bn', 'Bengali'), ('br', 'Breton'), ('bs', 'Bosnian')=
+, ('ca', 'Catalan'), ('ckb', 'Central Kurdish (Sorani)'), ('cs', 'Czech'), =
+('cy', 'Welsh'), ('da', 'Danish'), ('de', 'German'), ('dsb', 'Lower Sorbian=
+'), ('el', 'Greek'), ('en', 'English'), ('en-au', 'Australian English'), ('=
+en-gb', 'British English'), ('eo', 'Esperanto'), ('es', 'Spanish'), ('es-ar=
+', 'Argentinian Spanish'), ('es-co', 'Colombian Spanish'), ('es-mx', 'Mexic=
+an Spanish'), ('es-ni', 'Nicaraguan Spanish'), ('es-ve', 'Venezuelan Spanis=
+h'), ('et', 'Estonian'), ('eu', 'Basque'), ('fa', 'Persian'), ('fi', 'Finni=
+sh'), ('fr', 'French'), ('fy', 'Frisian'), ('ga', 'Irish'), ('gd', 'Scottis=
+h Gaelic'), ('gl', 'Galician'), ('he', 'Hebrew'), ('hi', 'Hindi'), ('hr', '=
+Croatian'), ('hsb', 'Upper Sorbian'), ('hu', 'Hungarian'), ('hy', 'Armenian=
+'), ('ia', 'Interlingua'), ('id', 'Indonesian'), ('ig', 'Igbo'), ('io', 'Id=
+o'), ('is', 'Icelandic'), ('it', 'Italian'), ('ja', 'Japanese'), ('ka', 'Ge=
+orgian'), ('kab', 'Kabyle'), ('kk', 'Kazakh'), ('km', 'Khmer'), ('kn', 'Kan=
+nada'), ('ko', 'Korean'), ('ky', 'Kyrgyz'), ('lb', 'Luxembourgish'), ('lt',=
+ 'Lithuanian'), ('lv', 'Latvian'), ('mk', 'Macedonian'), ('ml', 'Malayalam'=
+), ('mn', 'Mongolian'), ('mr', 'Marathi'), ('ms', 'Malay'), ('my', 'Burmese=
+'), ('nb', 'Norwegian Bokm=C3=A5l'), ('ne', 'Nepali'), ('nl', 'Dutch'), ('n=
+n', 'Norwegian Nynorsk'), ('os', 'Ossetic'), ('pa', 'Punjabi'), ('pl', 'Pol=
+ish'), ('pt', 'Portuguese'), ('pt-br', 'Brazilian Portuguese'), ('ro', 'Rom=
+anian'), ('ru', 'Russian'), ('sk', 'Slovak'), ('sl', 'Slovenian'), ('sq', '=
+Albanian'), ('sr', 'Serbian'), ('sr-latn', 'Serbian Latin'), ('sv', 'Swedis=
+h'), ('sw', 'Swahili'), ('ta', 'Tamil'), ('te', 'Telugu'), ('tg', 'Tajik'),=
+ ('th', 'Thai'), ('tk', 'Turkmen'), ('tr', 'Turkish'), ('tt', 'Tatar'), ('u=
+dm', 'Udmurt'), ('ug', 'Uyghur'), ('uk', 'Ukrainian'), ('ur', 'Urdu'), ('uz=
+', 'Uzbek'), ('vi', 'Vietnamese'), ('zh-hans', 'Simplified Chinese'), ('zh-=
+hant', 'Traditional Chinese')]
+LANGUAGES_BIDI =3D ['he', 'ar', 'ar-dz', 'ckb', 'fa', 'ug', 'ur']
+LANGUAGE_CODE =3D 'ru-ru'
+LANGUAGE_COOKIE_AGE =3D None
+LANGUAGE_COOKIE_DOMAIN =3D None
+LANGUAGE_COOKIE_HTTPONLY =3D False
+LANGUAGE_COOKIE_NAME =3D 'django_language'
+LANGUAGE_COOKIE_PATH =3D '/'
+LANGUAGE_COOKIE_SAMESITE =3D None
+LANGUAGE_COOKIE_SECURE =3D False
+LOCALE_PATHS =3D []
+LOGGING =3D {}
+LOGGING_CONFIG =3D 'logging.config.dictConfig'
+LOGIN_REDIRECT_URL =3D '/user/profile/'
+LOGIN_URL =3D '/user/login/'
+LOGOUT_REDIRECT_URL =3D '/'
+MANAGERS =3D []
+MEDIA_ROOT =3D '/home/user/projects/otus/otus_hw_07/media'
+MEDIA_URL =3D '/media/'
+MESSAGE_STORAGE =3D 'django.contrib.messages.storage.fallback.FallbackStora=
+ge'
+MIDDLEWARE =3D ['django.middleware.security.SecurityMiddleware', 'django.co=
+ntrib.sessions.middleware.SessionMiddleware', 'django.middleware.common.Com=
+monMiddleware', 'django.middleware.csrf.CsrfViewMiddleware', 'django.contri=
+b.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middl=
+eware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMidd=
+leware', 'debug_toolbar.middleware.DebugToolbarMiddleware']
+MIGRATION_MODULES =3D {}
+MONTH_DAY_FORMAT =3D 'F j'
+NUMBER_GROUPING =3D 0
+PASSWORD_HASHERS =3D '********************'
+PASSWORD_RESET_TIMEOUT =3D '********************'
+PREPEND_WWW =3D False
+REST_FRAMEWORK =3D {'DEFAULT_PERMISSION_CLASSES': ['rest_framework.permissi=
+ons.DjangoModelPermissions'], 'DEFAULT_AUTHENTICATION_CLASSES': ['rest_fram=
+ework.authentication.SessionAuthentication', 'rest_framework_simplejwt.auth=
+entication.JWTAuthentication'], 'DEFAULT_FILTER_BACKENDS': ['django_filters=
+.rest_framework.DjangoFilterBackend']}
+ROOT_URLCONF =3D 'settings.urls'
+RQ_QUEUES =3D {'default': {'HOST': 'localhost', 'PORT': 6379, 'DB': 0}}
+SECRET_KEY =3D '********************'
+SECRET_KEY_FALLBACKS =3D '********************'
+SECURE_CONTENT_TYPE_NOSNIFF =3D True
+SECURE_CROSS_ORIGIN_OPENER_POLICY =3D 'same-origin'
+SECURE_HSTS_INCLUDE_SUBDOMAINS =3D False
+SECURE_HSTS_PRELOAD =3D False
+SECURE_HSTS_SECONDS =3D 0
+SECURE_PROXY_SSL_HEADER =3D None
+SECURE_REDIRECT_EXEMPT =3D []
+SECURE_REFERRER_POLICY =3D 'same-origin'
+SECURE_SSL_HOST =3D None
+SECURE_SSL_REDIRECT =3D False
+SERVER_EMAIL =3D 'robot@superschool.ru'
+SESSION_CACHE_ALIAS =3D 'default'
+SESSION_COOKIE_AGE =3D 1209600
+SESSION_COOKIE_DOMAIN =3D None
+SESSION_COOKIE_HTTPONLY =3D True
+SESSION_COOKIE_NAME =3D 'sessionid'
+SESSION_COOKIE_PATH =3D '/'
+SESSION_COOKIE_SAMESITE =3D 'Lax'
+SESSION_COOKIE_SECURE =3D False
+SESSION_ENGINE =3D 'django.contrib.sessions.backends.db'
+SESSION_EXPIRE_AT_BROWSER_CLOSE =3D False
+SESSION_FILE_PATH =3D None
+SESSION_SAVE_EVERY_REQUEST =3D False
+SESSION_SERIALIZER =3D 'django.contrib.sessions.serializers.JSONSerializer'
+SETTINGS_MODULE =3D 'settings.settings'
+SHORT_DATETIME_FORMAT =3D 'm/d/Y P'
+SHORT_DATE_FORMAT =3D 'm/d/Y'
+SIGNING_BACKEND =3D 'django.core.signing.TimestampSigner'
+SILENCED_SYSTEM_CHECKS =3D []
+STATICFILES_DIRS =3D ['/home/user/projects/otus/otus_hw_07/static']
+STATICFILES_FINDERS =3D ['django.contrib.staticfiles.finders.FileSystemFind=
+er', 'django.contrib.staticfiles.finders.AppDirectoriesFinder']
+STATICFILES_STORAGE =3D 'django.contrib.staticfiles.storage.StaticFilesStor=
+age'
+STATIC_ROOT =3D None
+STATIC_URL =3D '/static/'
+STORAGES =3D {'default': {'BACKEND': 'django.core.files.storage.FileSystemS=
+torage'}, 'staticfiles': {'BACKEND': 'django.contrib.staticfiles.storage.St=
+aticFilesStorage'}}
+TEMPLATES =3D [{'BACKEND': 'django.template.backends.django.DjangoTemplates=
+', 'DIRS': [PosixPath('/home/user/projects/otus/otus_hw_07/templates')], 'A=
+PP_DIRS': True, 'OPTIONS': {'context_processors': ['django.template.context=
+_processors.debug', 'django.template.context_processors.request', 'django.c=
+ontrib.auth.context_processors.auth', 'django.contrib.messages.context_proc=
+essors.messages']}}]
+TEST_NON_SERIALIZED_APPS =3D []
+TEST_RUNNER =3D 'django.test.runner.DiscoverRunner'
+THOUSAND_SEPARATOR =3D ','
+TIME_FORMAT =3D 'P'
+TIME_INPUT_FORMATS =3D ['%H:%M:%S', '%H:%M:%S.%f', '%H:%M']
+TIME_ZONE =3D 'Asia/Krasnoyarsk'
+USE_I18N =3D True
+USE_THOUSAND_SEPARATOR =3D False
+USE_TZ =3D True
+USE_X_FORWARDED_HOST =3D False
+USE_X_FORWARDED_PORT =3D False
+WSGI_APPLICATION =3D 'settings.wsgi.application'
+X_FRAME_OPTIONS =3D 'DENY'
+YEAR_MONTH_FORMAT =3D 'F Y'
+
+
+
+-------------------------------------------------------------------------------

@@ -1,16 +1,15 @@
-import datetime
-
 from django import forms
 from django.contrib.auth import get_user_model
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, PasswordChangeForm
-#from image_uploader_widget.widgets import ImageUploaderWidget
+# from django.contrib.auth import authenticate, login
+# from image_uploader_widget.widgets import ImageUploaderWidget
 
 
 class LoginUserForm(AuthenticationForm):
     username = forms.CharField(label="Логин",
-                    widget=forms.TextInput(attrs={'class': 'form-input'}))
+                widget=forms.TextInput(attrs={'class': 'form-input'}))
     password = forms.CharField(label="Пароль",
-                    widget=forms.PasswordInput(attrs={'class': 'form-input'}))
+                widget=forms.PasswordInput(attrs={'class': 'form-input'}))
 
     class Meta:
         model = get_user_model()
@@ -46,7 +45,7 @@ class UserRegisterForm(UserCreationForm):
 class ProfileUserForm(forms.ModelForm):
     username = forms.CharField(disabled=True, label='Логин', widget=forms.TextInput(attrs={'class': 'form-input'}))
     email = forms.CharField(label='E-mail', widget=forms.TextInput(attrs={'class': 'form-input'}))
-    photo = forms.ImageField( label='Фото', widget=forms.FileInput(attrs={'class': 'form-input'}))
+    photo = forms.ImageField(label='Фото', widget=forms.FileInput(attrs={'class': 'form-input'}))
 
     class Meta:
         model = get_user_model()

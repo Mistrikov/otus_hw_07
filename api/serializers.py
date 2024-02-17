@@ -1,19 +1,43 @@
-from rest_framework.serializers import ModelSerializer, Serializer
-from mainapp.models import CategoryCourse, Course
+# from rest_framework.serializers import HyperlinkedModelSerializer, ModelSerializer  # , Serializer
+from mainapp.models import CategoryCourse, Course, MyEdu
 from userapp.models import ScUser
+from rest_framework import serializers
 
-class CategoryCourseModelSerializer(ModelSerializer):
+
+class CategoryCourseModelSerializer(serializers.ModelSerializer):
     # преобразует данные model <--> json
+    # id = serializers.HyperlinkedRelatedField(many=False, read_only=True, view_name='api:')
+    # url = serializers.HyperlinkedIdentityField(view_name="mainapp:category-list")
+
     class Meta:
         model = CategoryCourse
         fields = '__all__'
 
-class CourseModelSerializer(ModelSerializer):
+
+class CourseModelSerializer(serializers.ModelSerializer):
+    category = serializers.HyperlinkedRelatedField(
+        many=False,
+        read_only=True,
+        view_name='api:category-detail'
+    )
+    teachers = serializers.HyperlinkedRelatedField(
+        many=True,
+        read_only=True,
+        view_name='api:user-detail'
+    )
+
     class Meta:
         model = Course
         fields = '__all__'
 
-class ScUserModelSerializer(ModelSerializer):
+
+class ScUserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScUser
+        fields = '__all__'
+
+
+class MyEduModelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = MyEdu
         fields = '__all__'

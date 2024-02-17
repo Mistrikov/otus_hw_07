@@ -38,6 +38,11 @@
           <li class="nav-item">
             <a class="nav-link {% if '/course/' in request.path %}active{% endif %}" href="{% url 'mainapp:course_list' %}">Курсы</a>
           </li> 
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link {% if '/myedu/' in request.path %}active{% endif %}" href="{% url 'mainapp:myedu_list' %}">Обучение</a>
+          </li>
+          {% endif %}
           <li class="nav-item">
             <a class="nav-link {% if '/contacts/' in request.path %}active{% endif %}" href="{% url 'mainapp:contacts' %}">Контакты</a>
           </li>
@@ -49,7 +54,7 @@
           aria-expanded="false">{{ user.get_lastname }}</button>
         <ul class="dropdown-menu dropdown-menu-end">
           <li><a class="dropdown-item" href="{% url 'userapp:profile' %}">Профиль</a></li>
-          <li><a class="dropdown-item" href="#">Мои курсы</a></li>
+          <li><a class="dropdown-item" href="{% url 'mainapp:myedu_list' %}">Обучение</a></li>
           <li><a class="dropdown-item" href="#">Something else here</a></li>
           <li><hr class="dropdown-divider"></li>
           <li>

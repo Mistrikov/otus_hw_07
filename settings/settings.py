@@ -8,9 +8,7 @@ SECRET_KEY = 'django-insecure-^fa&ks2)bze(&i8+-)ajv5^&-^ndum55f&q2whmg_%^x&4i+ad
 
 DEBUG = True
 
-ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1', 'sc.it-kyzyl.ru', 'localhost']
-#ALLOWED_HOSTS = ['127.0.0.1']
-
+ALLOWED_HOSTS = ['test.it-kyzyl.ru', '192.168.1.253', '127.0.0.1', 'sc.it-kyzyl.ru', 'localhost', '10.8.0.9']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -21,12 +19,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'debug_toolbar',
-    #'image_uploader_widget',
+    # 'image_uploader_widget',
     'rest_framework',
     'django_rq',
-    #'rest_framework.authtoken',
+    # 'rest_framework.authtoken',
     'django_filters',
     'rest_framework_simplejwt',
+    'graphene_django',
 
     'mainapp',
     'userapp',
@@ -69,11 +68,11 @@ WSGI_APPLICATION = 'settings.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default1': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-    'pg': {
+    'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'uch',
         'USER': 'user',
@@ -110,7 +109,6 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
@@ -121,11 +119,10 @@ DEFAULT_USER_IMAGE = MEDIA_URL + 'user/nophoto.png'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 CSRF_TRUSTED_ORIGINS = ['https://test.it-kyzyl.ru', 'http://localhost', 'https://sc.it-kyzyl.ru']
-#CSRF_TRUSTED_ORIGINS = ['http://localhost']
 
 AUTH_USER_MODEL = 'userapp.ScUser'
 LOGIN_URL = '/user/login/'
-LOGIN_REDIRECT_URL = '/user/profile/'
+LOGIN_REDIRECT_URL = '/myedu/list/'  # '/user/profile/'
 LOGOUT_REDIRECT_URL = '/'
 
 INTERNAL_IPS = [
@@ -133,18 +130,18 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-#SHOW_TOOLBAR_CALLBACK = True
+# SHOW_TOOLBAR_CALLBACK = True
 
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissions', #IsAuthenticated' #IsAdminUser'#AllowAny' DjangoModelPermissions #DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.DjangoModelPermissions',
     ],
-    'DEFAULT_AUTHENTICATION_CLASSES': [ 
-        #'rest_framework.authentication.BasicAuthentication',
-        #'rest_framework.authentication.TokenAuthentication', 
-        'rest_framework.authentication.SessionAuthentication', 
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        # 'rest_framework.authentication.BasicAuthentication',
+        # 'rest_framework.authentication.TokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
@@ -155,12 +152,12 @@ RQ_QUEUES = {
         'HOST': 'localhost',
         'PORT': 6379,
         'DB': 0,
-        #'USERNAME': 'some-user',
-        #'PASSWORD': 'some-password',
-        #'DEFAULT_TIMEOUT': 360,
-        #'REDIS_CLIENT_KWARGS': {    # Eventual additional Redis connection arguments
+        # 'USERNAME': 'some-user',
+        # 'PASSWORD': 'some-password',
+        # 'DEFAULT_TIMEOUT': 360,
+        # 'REDIS_CLIENT_KWARGS': {    # Eventual additional Redis connection arguments
         #    'ssl_cert_reqs': None,
-        #},
+        # },
     },
 }
 
@@ -171,18 +168,21 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 # тестовая отправка писем. сохраняем их в папке emails
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend' 
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
 # отправка почты
-#EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+# EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'localhost'
-EMAIL_PORT = 1025 
-EMAIL_HOST_USER = '' 
-EMAIL_HOST_PASSWORD =  '' 
-EMAIL_USE_TLS = False 
+EMAIL_PORT = 1025
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+EMAIL_USE_TLS = False
 
 DEFAULT_FROM_EMAIL = 'robot@superschool.ru'
 SERVER_EMAIL = 'robot@superschool.ru'
 EMAIL_ADMIN = 'mistrikov1@yandex.ru'
 ADMINS = [('Игорь', 'mistrikov1@yandex.ru')]
 
+GRAPHENE = {
+    "SCHEMA": "api.schema.schema"  # приложение.файл.класс_схемы
+}

@@ -26,6 +26,7 @@ INSTALLED_APPS = [
     'django_filters',
     'rest_framework_simplejwt',
     'graphene_django',
+    'corsheaders',
 
     'mainapp',
     'userapp',
@@ -34,6 +35,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -186,3 +188,12 @@ ADMINS = [('Игорь', 'mistrikov1@yandex.ru')]
 GRAPHENE = {
     "SCHEMA": "api.schema.schema"  # приложение.файл.класс_схемы
 }
+
+# MIDDLEWARE_CLASSES = ( 
+#    'corsheaders.middleware.CorsMiddleware',
+#    'django.middleware.common.CommonMiddleware',
+#    )
+
+# CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'https://test.it-kyzyl.ru', 'http://192.168.1.253:8000']

@@ -34,7 +34,8 @@ class CourseModelSerializer(serializers.ModelSerializer):
 class ScUserModelSerializer(serializers.ModelSerializer):
     class Meta:
         model = ScUser
-        fields = '__all__'
+        # fields = '__all__'
+        exclude = ['password']  # Прячем поле с паролем
 
 
 class MyEduModelSerializer(serializers.ModelSerializer):

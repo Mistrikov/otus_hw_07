@@ -10,7 +10,7 @@ data = {
     'password': '1'
 }
 res = requests.post(url_auth_jwt, data=data)
-assert res.status_code==200, res.status_code
+assert res.status_code == 200, res.status_code
 token = res.json()["access"]
 
 # список категорий

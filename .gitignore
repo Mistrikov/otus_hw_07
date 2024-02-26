@@ -1,8 +1,12 @@
 __pycache__/
 venv/
 .vscode/
+htmlcov/
 
 .pytest_cache
 my_notes.txt
 *.sqlite3
 .env
+
+# nodejs
+frontend/node_modules/

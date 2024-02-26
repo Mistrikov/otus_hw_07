@@ -5,6 +5,7 @@ app_name = 'mainapp'
 
 urlpatterns = [
     path('contacts/', views.contacts_view, name='contacts'),
+    # path('testlogin/', views.testlogin_view, name='testlogin'),
     path('categorycourse/list/', views.CategoryCourseListView.as_view(), name='categorycourse_list'),
     path('categorycourse/create/', views.CategoryCourseCreateView.as_view(), name='categorycourse_create'),
     path('categorycourse/update/<int:pk>/', views.CategoryCourseUpdateView.as_view(), name='categorycourse_update'),

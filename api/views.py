@@ -107,7 +107,10 @@ class ScUserViewSet(
 
     def get_queryset(self):
         user_find = self.request.query_params.get('find', '')
+        user_group = self.request.query_params.get('group', '')
         queryset = ScUser.objects.all()
         if user_find:
             queryset = queryset.filter(name__icontains=user_find)
+        if user_group:
+            queryset = queryset.filter(groups__in=user_group)
         return queryset

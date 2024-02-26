@@ -1,0 +1,105 @@
+<!-- {% load static %} -->
+<html>
+<head>
+  <title>Проверка JavaScript</title>
+  <meta charset="utf-8">
+</head>
+<body>
+<br /><br /><br />
+<center>
+  <div id="authform">
+    <h3>Авторизация</h3>
+    <form>
+      <label for="username">Логин:</label>
+      <input type="text" name="username" id="username" autocomplete="False"><br />
+      <label for="passwd">Пароль:</label>
+      <input type="password" name="passwd" id="passwd" autocomplete="False"><br />
+      <input type="button" value="Войти" onclick="mylogin()"> <input type="reset" value="Очистить"><br />
+    </form>
+  </div>
+  <input type="hidden" id="token" title="token">
+  <div id="test" style="display: none">
+    <table>
+      <tr>
+        <td>
+          <input type="button" onclick="getCategoryList()" value="Категории" style="width:150px"><br />
+          <input type="button" onclick="getCourseList()" value="Курсы" style="width:150px"><br />
+          <input type="button" onclick="getUserList()" value="Пользователи" style="width:150px"><br />
+        </td>
+        <td><textarea id="result" rows="15" cols="80"></textarea></td>
+      </tr>
+    </table>
+  </div>
+</center>
+</body>
+<!--script src="{% static 'frontend/index.js' %}"></script-->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script> 
+<script>
+  const URL = window.location.origin+"/api/";
+  async function mylogin() {
+    var login = document.getElementById('username').value;
+    var pass = document.getElementById('passwd').value;
+
+    let resp = await axios.post(
+      URL+'token/',
+      {
+        'username': login,
+        'password': pass
+      },
+      {
+        headers: {
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      });
+    let result = await resp.data;
+    document.getElementById('token').value = result.access;
+    document.getElementById('authform').style.display = 'none';
+    document.getElementById('test').style.display = 'block';
+  }
+
+  async function getCategoryList() {
+    try {
+      let token = document.getElementById('token').value;
+      let resp = await axios.get(URL+'category/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      let result = await resp.data;
+      document.getElementById('result').innerHTML = JSON.stringify(result);
+    } catch (e) {
+      console.log('Error: ' + e.message);
+    }
+  }
+
+  async function getCourseList() {
+    try {
+      let token = document.getElementById('token').value;
+      let resp = await axios.get(URL+'course/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      let result = await resp.data;
+      document.getElementById('result').innerHTML = JSON.stringify(result);
+    } catch (e) {
+      console.log('Error: ' + e.message);
+    }
+  }
+
+  async function getUserList() {
+    try {
+      let token = document.getElementById('token').value;
+      let resp = await axios.get(URL+'user/', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+      let result = await resp.data;
+      document.getElementById('result').innerHTML = JSON.stringify(result);
+    } catch (e) {
+      console.log('Error: ' + e.message);
+    }
+  }
+</script>
+</html>

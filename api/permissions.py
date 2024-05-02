@@ -1,6 +1,7 @@
 from rest_framework import permissions
 
-class OnlyForTeachers(permissions.BasePermission): # можно наследоваться от IsAuthenticated
+
+class OnlyForTeachers(permissions.BasePermission):  # можно наследоваться от IsAuthenticated
     """
     Global permission check for blocked IPs.
     """

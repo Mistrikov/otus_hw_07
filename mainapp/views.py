@@ -15,8 +15,8 @@ import django_rq
 # from celery import Celery
 
 
-# def testlogin_view(request):
-#    return render(request, 'mainapp/testlogin.html')
+def testjs_view(request):
+    return render(request, 'mainapp/test-js.html')
 
 
 def index_view(request):

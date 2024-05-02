@@ -1,4 +1,4 @@
-<!-- {% load static %} -->
+{% load static %}
 <html>
 <head>
   <title>Проверка JavaScript</title>
@@ -32,7 +32,13 @@
   </div>
 </center>
 </body>
-<!--script src="{% static 'frontend/index.js' %}"></script-->
+<script type="module" src="{% static 'frontend/index.js' %}">
+ //import {qw, start} from "{% static 'frontend/index.js' %}";
+ console.log("hello");
+ console.log(qw());
+ //start();
+</script>
+
 <script>
   const URL = window.location.origin+"/api/";
   async function login() {

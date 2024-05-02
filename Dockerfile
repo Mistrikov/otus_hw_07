@@ -1,7 +1,8 @@
-FROM tiangolo/uwsgi-nginx-flask:python3.11
+from python:3.11
 
-COPY ./requirements.txt /app/requirements.txt
+RUN apt-get update
+RUN pip3 install --upgrade pip
 
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
-
-COPY ./ /app
+COPY ./ ./
+RUN pip3 install -r requirements.txt
+RUN pip3 install gunicorn

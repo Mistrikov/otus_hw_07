@@ -15,7 +15,7 @@ class Command(BaseCommand):
             Course.objects.all().delete()
             CategoryCourse.objects.all().delete()
             MyEdu.objects.all().delete()
-            # ScUser.objects.all().delete()
+            ScUser.objects.all().delete()
 
             print('создание учителя')
             teacher1 = ScUser.objects.create_user(username='teacher1', email='teacher@example.com', password='1', phone='123')

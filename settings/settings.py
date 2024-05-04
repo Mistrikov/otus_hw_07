@@ -50,18 +50,9 @@ CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://localhost:8081']
 
 # тестовая отправка писем. сохраняем их в папке emails
-#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-#EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
-# отправка почты
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-EMAIL_HOST ='smtp.mail.ru'
-EMAIL_PORT =465
-EMAIL_HOST_USER ='support@it-kyzyl.ru'
-EMAIL_HOST_PASSWORD ='hvvMqZuEmE9EDiYCEya8'
-EMAIL_USE_TLS =False
-EMAIL_USE_SSL =True
-DEFAULT_FROM_EMAIL ='support@it-kyzyl.ru'
-SERVER_EMAIL ='support@it-kyzyl.ru'
-EMAIL_ADMIN ='mistrikov1@yandex.ru'
+EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
+
+EMAIL_ADMIN = 'mistrikov1@yandex.ru'
 
 print("load settings file")

@@ -19,7 +19,7 @@ DATABASES = {
     }
 }
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost', 'https://it-kyzyl.ru']
+CSRF_TRUSTED_ORIGINS = ['http://localhost', 'https://test.it-kyzyl.ru']
 
 INTERNAL_IPS = [
     "127.0.0.1",

@@ -35,13 +35,23 @@ services:
       PGDB: "${POSTGRES_DB}"
       PGUSER: "${POSTGRES_USER}"
       PGPASSWORD: "${POSTGRES_PASSWORD}"
+      EMAIL_HOST: "${EMAIL_HOST}"
+      EMAIL_PORT: "${EMAIL_PORT}"
+      EMAIL_HOST_USER: "${EMAIL_HOST_USER}"
+      EMAIL_HOST_PASSWORD: "${EMAIL_HOST_PASSWORD}"
+      EMAIL_USE_SSL: "${EMAIL_USE_SSL}"
     command: bash -c "
-      python manage.py migrate --settings=settings.prod_settings
-      && python manage.py fill_db --settings=settings.prod_settings
-      && python manage.py runserver 0.0.0.0:8081 --settings=settings.prod_settings
+      export DJANGO_SETTINGS_MODULE=settings.prod_settings
+      && python manage.py migrate 
+      && (python manage.py rqworker &)
+      && (celery -A settings worker &)
+      && python manage.py fill_db 
+      && gunicorn settings.wsgi -b 0.0.0.0:8081
       "
-      # && gunicorn settings.wsgi -b 0.0.0.0:8081 --access-logfile - --log-file - --log-level INFO
-      # python manage.py runserver 0.0.0.0:8081 --settings=settings.prod_settings
+      # python manage.py sendtestemail mistrikov@mail.ru
+      # gunicorn settings.wsgi -b 0.0.0.0:8081
+      # python manage.py runserver 0.0.0.0:8081
+      # && (celery --app settings worker &)
     depends_on:
       pg:
         condition: service_healthy

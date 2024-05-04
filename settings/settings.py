@@ -19,13 +19,6 @@ DATABASES = {
     }
 }
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-DEFAULT_USER_IMAGE = MEDIA_URL + 'user/nophoto.png'
-
 CSRF_TRUSTED_ORIGINS = ['http://localhost', 'https://it-kyzyl.ru']
 
 INTERNAL_IPS = [
@@ -35,7 +28,7 @@ INTERNAL_IPS = [
 
 RQ_QUEUES = {
     'default': {
-        'HOST': 'redis',
+        'HOST': 'localhost',
         'PORT': 6379,
         'DB': 0,
         # 'USERNAME': 'some-user',
@@ -47,13 +40,28 @@ RQ_QUEUES = {
     },
 }
 
-CELERY_BROKER_URL = "redis://redishost:6379/0"
-CELERY_RESULT_BACKEND = "redis://redishost:6379/0"
+CELERY_BROKER_URL = "redis://localhost:6379/0"
+CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 
 CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = ['http://localhost:8000', 'http://localhost:8081']
+
+# тестовая отправка писем. сохраняем их в папке emails
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
+# отправка почты
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST ='smtp.mail.ru'
+EMAIL_PORT =465
+EMAIL_HOST_USER ='support@it-kyzyl.ru'
+EMAIL_HOST_PASSWORD ='hvvMqZuEmE9EDiYCEya8'
+EMAIL_USE_TLS =False
+EMAIL_USE_SSL =True
+DEFAULT_FROM_EMAIL ='support@it-kyzyl.ru'
+SERVER_EMAIL ='support@it-kyzyl.ru'
+EMAIL_ADMIN ='mistrikov1@yandex.ru'
 
 print("load settings file")

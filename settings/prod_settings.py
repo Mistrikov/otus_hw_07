@@ -19,13 +19,6 @@ DATABASES = {
     }
 }
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-DEFAULT_USER_IMAGE = MEDIA_URL + 'user/nophoto.png'
-
 CSRF_TRUSTED_ORIGINS = ['http://localhost', 'http://10.8.0.9', 'http://192.168.1.253', 'https://test.it-kyzyl.ru']
 
 INTERNAL_IPS = [
@@ -56,8 +49,22 @@ CELERY_RESULT_SERIALIZER = 'json'
 # CORS_ORIGIN_ALLOW_ALL = True
 # CORS_ORIGIN_WHITELIST = ['http://localhost:8001', 'http://game.it-kyzyl.ru:8001', 'http://10.8.0.1:8001']
 
-CORS_ALLOW_ALL_ORIGINS = True
-CORS_ORIGIN_ALLOW_ALL = True
+#CORS_ALLOW_ALL_ORIGINS = True
+CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = ['http://localhost:8081', 'https://test.it-kyzyl.ru']
+
+# отправка почты
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = os.getenv('EMAIL_HOST')
+EMAIL_PORT = os.getenv('EMAIL_PORT')
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER') 
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+# EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS')
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+SERVER_EMAIL = EMAIL_HOST_USER
+EMAIL_ADMIN = EMAIL_HOST_USER
+
+ADMINS = [('Игорь', 'mistrikov1@yandex.ru')]
 
 print("load prod_settings file")

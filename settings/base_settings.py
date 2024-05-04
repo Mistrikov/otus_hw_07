@@ -150,6 +150,7 @@ REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
 }
 
+DEFAULT_CHARSET = 'utf8'
 RQ_QUEUES = {
     'default': {
         'HOST': 'localhost',
@@ -164,15 +165,7 @@ RQ_QUEUES = {
     },
 }
 
-CELERY_BROKER_URL = "redis://localhost:6379/0"
-CELERY_RESULT_BACKEND = "redis://localhost:6379/0"
-CELERY_ACCEPT_CONTENT = ['application/json']
-CELERY_TASK_SERIALIZER = 'json'
-CELERY_RESULT_SERIALIZER = 'json'
 
-# тестовая отправка писем. сохраняем их в папке emails
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'emails')
 # отправка почты
 # EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = 'localhost'
@@ -180,6 +173,7 @@ EMAIL_PORT = 1025
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = False
+EMAIL_USE_SSL = False
 
 DEFAULT_FROM_EMAIL = 'robot@superschool.ru'
 SERVER_EMAIL = 'robot@superschool.ru'
